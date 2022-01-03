@@ -1,6 +1,10 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
-export const Container = styled.div`
+interface IProps {
+  available: boolean;
+}
+
+export const Container = styled.div<IProps>`
   background: #f0f0f5;
   border-radius: 8px;
 
@@ -12,13 +16,16 @@ export const Container = styled.div`
     transition: 0.3s opacity;
     text-align: center;
 
-    ${props =>
-    !props.available &&
-    css`
+    ${(props) =>
+      !props.available &&
+      css`
         opacity: 0.3;
       `};
 
     img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
       pointer-events: none;
       user-select: none;
     }
@@ -114,7 +121,7 @@ export const Container = styled.div`
 
           &:before {
             position: absolute;
-            content: '';
+            content: "";
             height: 20px;
             width: 40px;
             left: 8px;
